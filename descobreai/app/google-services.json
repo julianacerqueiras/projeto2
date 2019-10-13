@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "201791219422",
+    "firebase_url": "https://descobreai-c6ad6.firebaseio.com",
+    "project_id": "descobreai-c6ad6",
+    "storage_bucket": "descobreai-c6ad6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201791219422:android:6638aa5d8ef47f5682c44f",
+        "android_client_info": {
+          "package_name": "br.com.projetofinal.descobreai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201791219422-pjn4omlf1ots2ocn9goj4rfb5e1uie9n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.projetofinal.descobreai",
+            "certificate_hash": "44358508a70f8b76b0deb050d2d2a3af5165476d"
+          }
+        },
+        {
+          "client_id": "201791219422-upr2nu771goh27c61vkisc730i1svf91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWXIOalkudxjx7-SoI8KIP-ihljC0jaqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201791219422-upr2nu771goh27c61vkisc730i1svf91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
