@@ -18,8 +18,6 @@ public class Menu extends AppCompatActivity {
     private ImageView btnContato;
     private ImageView btnQrCode;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +90,12 @@ public class Menu extends AppCompatActivity {
     private void closeMenu(){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
         finish();
     }
 }

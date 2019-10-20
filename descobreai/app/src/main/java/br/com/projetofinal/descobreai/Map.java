@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -201,5 +202,13 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         client.requestLocationUpdates(locationRequest, locationCallBack, null);
         //chamar a requisição de update
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(getApplicationContext(), Menu.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -147,4 +147,12 @@ public class QrCode extends AppCompatActivity implements ZXingScannerView.Result
         AlertDialog alert1 = builder.create();
         alert1.show();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(getApplicationContext(), Menu.class);
+        startActivity(intent);
+        finish();
+    }
 }

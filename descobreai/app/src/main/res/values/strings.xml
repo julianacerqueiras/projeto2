@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">descobreai</string>
     <string name="title_activity_maps">Map</string>
+    <string name="facebook_app_id">658741384530649</string>
+    <string name="fb_login_protocol_scheme">fb658741384530649</string>
+
 </resources>
