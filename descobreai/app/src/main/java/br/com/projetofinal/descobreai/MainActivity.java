@@ -38,10 +38,12 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnLogin;
-    private Button btnCancel;
+
     private EditText edtEmail;
     private EditText edtPassword;
+    private Button btnLogin;
+    private Button btnCancel;
+    private Button btnCadastro;
     private SignInButton btnGoogle;
     private LoginButton btnFacebook;
 
@@ -63,10 +65,12 @@ public class MainActivity extends AppCompatActivity {
         //Tratar as respostas de login Facebook chamando o callback
         mCallbackManager = CallbackManager.Factory.create();
 
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnCancel = (Button) findViewById(R.id.btnCancel);
+
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnCancel = (Button) findViewById(R.id.btnCancel);
+        btnCadastro = (Button) findViewById(R.id.btnCadastro);
         btnGoogle = (SignInButton) findViewById(R.id.btnGoogle);
         btnGoogle.setSize(SignInButton.SIZE_STANDARD);
         btnFacebook = findViewById(R.id.btnFacebook);
@@ -127,6 +131,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 edtEmail.setText("");
                 edtPassword.setText("");
+            }
+        });
+        btnCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Cadastro.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
