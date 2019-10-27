@@ -3,13 +3,13 @@ package br.com.projetofinal.descobreai;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -25,7 +25,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -46,15 +45,14 @@ public class MainActivity extends AppCompatActivity {
     private SignInButton btnGoogle;
     private LoginButton btnFacebook;
 
-    private static final int RC_SIGN_IN = 1;
-
-
     //Firebase
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private CallbackManager mCallbackManager;
+    private static final int RC_SIGN_IN = 1;
 
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         //Tratar as respostas de login Facebook chamando o callback
         mCallbackManager = CallbackManager.Factory.create();
-
 
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnCancel = (Button) findViewById(R.id.btnCancel);
@@ -83,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        //Botão login Google
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Botão login Facebook
         btnFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,11 +131,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -173,11 +173,12 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(), "Succesfuly Login", Toast.LENGTH_SHORT).show();
                             openMenuActivity();
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
                         }
+
+                        // ...
                     }
                 });
     }
@@ -206,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+
+
     private void loginUser (String email, String password){
 
         mAuth.signInWithEmailAndPassword(email, password)
@@ -228,6 +231,12 @@ public class MainActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+
+    public void callReset(View view){
+        Intent intent = new Intent(getApplicationContext(), ResetActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private boolean userConnected(){
