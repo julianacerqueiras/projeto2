@@ -4,55 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sobre">
+    tools:context=".Sobre"
+    tools:layout_editor_absoluteY="81dp">
+
 
     <ImageView
         android:id="@+id/logo_sobre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="416dp"
+        android:layout_height="179dp"
+        android:background="#ffc331"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.113"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo2" />
 
     <TextView
         android:id="@+id/txt_sobre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sobre a Empresa"
+        android:text="Sobre Nós"
+        android:textColor="@color/black"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.299" />
 
     <ScrollView
 
         android:id="@+id/scrView_Sobre"
-        android:layout_width="320dp"
-        android:layout_height="400dp"
+        android:layout_width="381dp"
+        android:layout_height="401dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:background="#3EAFB3B3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.706">
+        app:layout_constraintVertical_bias="0.897">
 
         <TextView
             android:id="@+id/txt_Sobre_conteudo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_padrao"
-            android:text="ajudará a desenvolver o movimento turístico, com o objetivo de auxiliar no processo de descobrimento e conhecimento da história cultural e local, onde muitas das vezes só é conhecida por estudiosos, partindo dos seus edifícios e espaços públicos que passaram por transformações e estão em constante mudança. " />
+            android:text="  Ajudará a desenvolver o movimento turístico, com o objetivo de auxiliar no processo de descobrimento e
+            conhecimento da história cultural e local, onde muitas das vezes só é conhecida por estudiosos, partindo dos seus edifícios
+             e espaços públicos que passaram por transformações e estão em constante mudança.
+            ajudará a desenvolver o movimento turístico, com o objetivo de auxiliar no processo de descobrimento e
+            conhecimento da história cultural e local, onde muitas das vezes só é conhecida por estudiosos, partindo dos seus edifícios
+             e espaços públicos que passaram por transformações e estão em constante mudança
+                ajudará a desenvolver o movimento turístico, com o objetivo de auxiliar no processo de descobrimento e
+            conhecimento da história cultural e local, onde muitas das vezes só é conhecida por estudiosos, partindo dos seus edifícios
+             e espaços públicos que passaram por transformações e estão em constante mudança"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
     </ScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
