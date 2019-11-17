@@ -9,9 +9,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.SearchView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -34,15 +37,21 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.io.IOException;
+import java.util.List;
+
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
     FusedLocationProviderClient client;
     GoogleMap mMap;
+    SupportMapFragment mapFragment;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -50,6 +59,38 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
 
         client = LocationServices.getFusedLocationProviderClient(this);
+
+        searchView =findViewById(R.id.sv_location);
+        mapFragment =(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                String location = searchView.getQuery().toString();
+                List<Address> addressList = null;
+
+                if (location != null || !location.equals("")){
+                    Geocoder geocoder = new Geocoder(Map.this);
+                    try {
+                        addressList = geocoder.getFromLocationName(location, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Address address = addressList.get(0);
+                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -129,11 +170,22 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                             LatLng lasalle = new LatLng(-22.895840, -43.106460);
                             LatLng largoboticario= new LatLng(-22.939032, -43.201441);
                             LatLng largocarioca = new LatLng(-22.906554, -43.178122);
+                            LatLng ouvidor = new LatLng(-22.902820, -43.177234);
+                            LatLng cinelandia = new LatLng(-22.910418, -43.176210);
+                            LatLng selaron = new LatLng(-22.915044, -43.179247);
+                            LatLng teles = new LatLng(-22.897929, -43.174390);
+                            LatLng se = new LatLng(-22.902119, -43.175411);
 
                             //Marcadores no Map
                             mMap.addMarker(new MarkerOptions().position(lasalle).title("Unilasalle"));
                             mMap.addMarker(new MarkerOptions().position(largoboticario).title("Largo do Boticario"));
                             mMap.addMarker(new MarkerOptions().position(largocarioca).title("Largo da Carioca"));
+                            mMap.addMarker(new MarkerOptions().position(ouvidor).title("Rua do Ouvidor"));
+                            mMap.addMarker(new MarkerOptions().position(cinelandia).title("Cinelandia"));
+                            mMap.addMarker(new MarkerOptions().position(selaron).title("Escadaria Selaron"));
+                            mMap.addMarker(new MarkerOptions().position(teles).title("Arco do Teles"));
+                            mMap.addMarker(new MarkerOptions().position(se).title("Igreja N.Sr.ª do Carmo - Antiga Sé"));
+
 
                         } else {
                             Log.i("Teste", "null");

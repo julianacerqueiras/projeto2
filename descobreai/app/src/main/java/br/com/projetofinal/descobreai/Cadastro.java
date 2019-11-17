@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
@@ -58,9 +59,11 @@ public class Cadastro extends AppCompatActivity {
                         cadastraUser();
                     } else {
                         Toast.makeText(Cadastro.this, "A senha deve ter ao menos 6 caracteres", Toast.LENGTH_SHORT).show();
+                        return;
                     }
                 } else {
                     Toast.makeText(Cadastro.this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
         });
@@ -95,12 +98,14 @@ public class Cadastro extends AppCompatActivity {
                     });
                 }
                 else {
-                    Toast.makeText(Cadastro.this, "Erro ao cadastrar. Verifique os campos preenchidos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Cadastro.this, "E-mail já cadastrado", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
     }
+
+
 
     @Override
     public void onBackPressed()

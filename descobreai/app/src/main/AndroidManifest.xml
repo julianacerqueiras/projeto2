@@ -46,19 +46,26 @@
         </activity>
 
         <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Map" />
-        <activity android:name=".Menu" />
-        <activity android:name=".Sobre" />
-        <activity android:name=".Contato" />
-        <activity android:name=".QrCode" />
-        <activity android:name=".Cadastro"/>
-        <activity android:name=".ResetActivity"/>
+        <activity android:name=".Map"
+            android:parentActivityName=".Menu"/>
+        <activity android:name=".Menu"/>
+        <activity android:name=".Sobre"
+            android:parentActivityName=".Menu"/>
+        <activity android:name=".Contato"
+            android:parentActivityName=".Menu"/>
+        <activity android:name=".QrCode"
+            android:parentActivityName=".Menu"/>
+        <activity android:name=".Cadastro"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ResetActivity"
+            android:parentActivityName=".MainActivity"/>
+
     </application>
 </manifest>

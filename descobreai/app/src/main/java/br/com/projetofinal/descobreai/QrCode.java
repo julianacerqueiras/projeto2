@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -30,6 +29,8 @@ public class QrCode extends AppCompatActivity implements ZXingScannerView.Result
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         scannerView = new ZXingScannerView(this);
         setContentView(scannerView);
         int currentApiVersion = Build.VERSION.SDK_INT;

@@ -34,6 +34,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.SignInMethodQueryResult;
 
 import java.util.Arrays;
 
@@ -128,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                    checkemail();
+
                     if (TextUtils.isEmpty(edtEmail.getText().toString()) || TextUtils.isEmpty(edtPassword.getText().toString())){
                         Toast.makeText(getApplicationContext(), "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
                         return;
@@ -160,9 +163,28 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    private void checkemail(){
+
+        mAuth.fetchSignInMethodsForEmail(edtEmail.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
+                        boolean check = !task.getResult().getSignInMethods().isEmpty();
+
+                        if (!check){
+                            Toast.makeText(getApplicationContext(), "E-mail não encontrado", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+    }
+
 
     //Login Padrão
     private void loginUser (String email, String password){
+
+        checkemail();
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -172,13 +194,13 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getApplicationContext(), "Succesfuly Login", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Login realizado", Toast.LENGTH_SHORT).show();
                             openMenuActivity();
 
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                            Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos!.",
                                     Toast.LENGTH_SHORT).show();
                         }
                         // ...

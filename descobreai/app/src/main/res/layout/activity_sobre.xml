@@ -25,6 +25,8 @@
         android:id="@+id/txt_sobre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:text="Sobre Nós"
         android:textColor="@color/black"
         android:textSize="30sp"
@@ -39,30 +41,19 @@
     <ScrollView
 
         android:id="@+id/scrView_Sobre"
-        android:layout_width="381dp"
-        android:layout_height="401dp"
+        android:layout_width="371dp"
+        android:layout_height="435dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897">
+        app:layout_constraintTop_toBottomOf="@+id/txt_sobre"
+        tools:layout_editor_absoluteX="20dp">
 
         <TextView
             android:id="@+id/txt_Sobre_conteudo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_padrao"
-            android:text="  Ajudará a desenvolver o movimento turístico, com o objetivo de auxiliar no processo de descobrimento e
-            conhecimento da história cultural e local, onde muitas das vezes só é conhecida por estudiosos, partindo dos seus edifícios
-             e espaços públicos que passaram por transformações e estão em constante mudança.
-            ajudará a desenvolver o movimento turístico, com o objetivo de auxiliar no processo de descobrimento e
-            conhecimento da história cultural e local, onde muitas das vezes só é conhecida por estudiosos, partindo dos seus edifícios
-             e espaços públicos que passaram por transformações e estão em constante mudança
-                ajudará a desenvolver o movimento turístico, com o objetivo de auxiliar no processo de descobrimento e
-            conhecimento da história cultural e local, onde muitas das vezes só é conhecida por estudiosos, partindo dos seus edifícios
-             e espaços públicos que passaram por transformações e estão em constante mudança"
+            android:text="A aplicação foi desenvolvida para um trabalho de conclusão do curso de Sistema de Informação da faculdade Unilasalle-RJ. Com o objetivo de auxiliar no processo de descobrimento e conhecimento da história cultural de uma região, onde muitas das vezes só é conhecida por estudiosos. Iniciamente a região escolhida é a do Rio antigo partindo dos seus edifício e espaços públicos que passaram por transformações e estão em constante mudança."
             android:textColor="@color/black"
             android:textSize="20sp" />
 
