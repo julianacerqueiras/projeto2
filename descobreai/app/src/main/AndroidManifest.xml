@@ -54,6 +54,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Map"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".Menu"/>
         <activity android:name=".Menu"/>
         <activity android:name=".Sobre"

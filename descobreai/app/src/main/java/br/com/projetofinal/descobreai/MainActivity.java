@@ -129,13 +129,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                    checkemail();
-
-                    if (TextUtils.isEmpty(edtEmail.getText().toString()) || TextUtils.isEmpty(edtPassword.getText().toString())){
+                    if (TextUtils.isEmpty(edtEmail.getText().toString()) || TextUtils.isEmpty(edtPassword.getText().toString()))
                         Toast.makeText(getApplicationContext(), "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
                     else{
+                        checkemail();
                         loginUser(edtEmail.getText().toString(), edtPassword.getText().toString());
                     }
                 }
